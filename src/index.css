@@ -1,0 +1,160 @@
+/* ✅ Always import fonts first */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;700&display=swap');
+
+.font-pixel {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✅ Dungeon & Dragons Pixel Design System */
+@layer base {
+  :root {
+    /* D&D RPG Color Palette */
+    --background: 210 54% 8%;
+    --foreground: 45 100% 95%;
+
+    --card: 210 50% 12%;
+    --card-foreground: 45 100% 95%;
+
+    --popover: 210 50% 10%;
+    --popover-foreground: 45 100% 95%;
+
+    --primary: 24 95% 53%;
+    --primary-foreground: 45 100% 95%;
+
+    --secondary: 48 96% 53%;
+    --secondary-foreground: 210 54% 8%;
+
+    --muted: 210 40% 20%;
+    --muted-foreground: 45 60% 80%;
+
+    --accent: 48 96% 53%;
+    --accent-foreground: 210 54% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 45 100% 95%;
+
+    --border: 24 95% 53%;
+    --input: 210 40% 20%;
+    --ring: 24 95% 53%;
+
+    --radius: 0rem;
+
+    /* Custom RPG Colors */
+    --dungeon-navy: 210 54% 8%;
+    --torch-orange: 24 95% 53%;
+    --treasure-gold: 48 96% 53%;
+    --parchment-cream: 45 100% 95%;
+    --shadow-dark: 210 50% 5%;
+    --glow-orange: 24 100% 60%;
+    
+    /* Gradients */
+    --gradient-dungeon: linear-gradient(180deg, hsl(210 54% 8%) 0%, hsl(210 50% 5%) 100%);
+    --gradient-glow: radial-gradient(circle, hsl(24 95% 53% / 0.3) 0%, transparent 70%);
+    --gradient-treasure: linear-gradient(135deg, hsl(48 96% 53%) 0%, hsl(45 90% 45%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-pixel;
+  
+    /* ✅ Custom cursor for body */
+  }
+  
+  button, a {
+    /* ✅ Custom cursor for clickable elements */
+    cursor: url("https://cur.cursors-4u.net/cursors/cur-2/cur117.cur"), auto;
+  }
+}
+
+
+@layer utilities {
+  .pixel-border {
+    box-shadow: 
+      0 0 0 2px hsl(var(--border)),
+      0 0 20px hsl(var(--torch-orange) / 0.3),
+      inset 0 0 20px hsl(var(--torch-orange) / 0.1);
+  }
+
+  .pixel-border-gold {
+    box-shadow: 
+      0 0 0 2px hsl(var(--treasure-gold)),
+      0 0 20px hsl(var(--treasure-gold) / 0.4),
+      inset 0 0 20px hsl(var(--treasure-gold) / 0.1);
+  }
+
+  .glow-text {
+    text-shadow: 
+      0 0 10px hsl(var(--torch-orange) / 0.8),
+      0 0 20px hsl(var(--torch-orange) / 0.5),
+      0 0 30px hsl(var(--torch-orange) / 0.3);
+  }
+
+  .glow-text-gold {
+    text-shadow: 
+      0 0 10px hsl(var(--treasure-gold) / 0.8),
+      0 0 20px hsl(var(--treasure-gold) / 0.5),
+      0 0 30px hsl(var(--treasure-gold) / 0.3);
+  }
+
+  .font-pixel {
+    font-family: 'Press Start 2P', cursive;
+    line-height: 1.6;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--torch-orange) / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(var(--torch-orange) / 0.6); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-sparkle {
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+}
+
+/* ✅ Optional duplicate for fallback */
+.pixel-font {
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  cursor: url("https://cur.cursors-4u.net/cursors/cur-2/cur117.cur"), auto;
+}
+
+
+/* body{
+  cursor: url("Hlogo.cur") 4 4, auto;
+} */
