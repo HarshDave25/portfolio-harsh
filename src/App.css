@@ -1,29 +1,38 @@
+/* 🌐 Google Font Import */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+/* ✅ Global Font Utility */
 .poppins-font {
   font-family: 'Poppins', sans-serif;
 }
 
+/* 🧱 Root Container (Centers App Content) */
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
+/* 🎨 Logo Animations and Effects */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter 300ms, transform 300ms;
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #ff9d00aa);
+  transform: scale(1.05);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* 🔁 Logo Rotation Animation */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -39,14 +48,57 @@
   }
 }
 
+/* 🧩 Card Style */
 .card {
   padding: 2em;
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  transition: transform 0.3s ease;
 }
 
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* 📘 Docs Text Style */
 .read-the-docs {
-  color: #888;
+  color: #aaa;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
-.poppins-font {
-  font-family: 'Poppins', sans-serif;
+/* 📱 Responsive Fixes */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .logo {
+    height: 4em;
+    padding: 1em;
+  }
+
+  .card {
+    padding: 1.5em;
+  }
+
+  .read-the-docs {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #root {
+    padding: 0.8rem;
+  }
+
+  .logo {
+    height: 3em;
+  }
+
+  .card {
+    padding: 1rem;
+  }
 }

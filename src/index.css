@@ -1,181 +1,135 @@
-/* ✅ Always import fonts first */
+/* ✅ Font imports */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Poppins:wght@400;700&display=swap');
-
-/* ✅ Font utilities */
-.font-pixel {
-  font-family: 'Press Start 2P', cursive;
-}
-
-.font-poppins {
-  font-family: 'Poppins', sans-serif;
-  transition: all 0.3s ease;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 /* ✅ Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ✅ Dungeon & Dragons Pixel Design System */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ✅ Fonts */
+.font-pixel {
+  font-family: 'Press Start 2P', cursive;
+  line-height: 1.6;
+}
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* ✅ RPG Base Theme */
 @layer base {
   :root {
-    /* D&D RPG Color Palette */
     --background: 210 54% 8%;
     --foreground: 45 100% 95%;
-
     --card: 210 50% 12%;
     --card-foreground: 45 100% 95%;
-
     --popover: 210 50% 10%;
     --popover-foreground: 45 100% 95%;
-
     --primary: 24 95% 53%;
     --primary-foreground: 45 100% 95%;
-
     --secondary: 48 96% 53%;
     --secondary-foreground: 210 54% 8%;
-
     --muted: 210 40% 20%;
     --muted-foreground: 45 60% 80%;
-
     --accent: 48 96% 53%;
     --accent-foreground: 210 54% 8%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 45 100% 95%;
-
     --border: 24 95% 53%;
     --input: 210 40% 20%;
     --ring: 24 95% 53%;
-
     --radius: 0rem;
-
-    /* Custom RPG Colors */
     --dungeon-navy: 210 54% 8%;
     --torch-orange: 24 95% 53%;
     --treasure-gold: 48 96% 53%;
     --parchment-cream: 45 100% 95%;
     --shadow-dark: 210 50% 5%;
     --glow-orange: 24 100% 60%;
-    
-    /* Gradients */
     --gradient-dungeon: linear-gradient(180deg, hsl(210 54% 8%) 0%, hsl(210 50% 5%) 100%);
     --gradient-glow: radial-gradient(circle, hsl(24 95% 53% / 0.3) 0%, transparent 70%);
     --gradient-treasure: linear-gradient(135deg, hsl(48 96% 53%) 0%, hsl(45 90% 45%) 100%);
   }
-}
 
-/* ✅ Global base styling */
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground font-pixel;
+    @apply bg-background text-foreground font-pixel overflow-x-hidden;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+    cursor: url("https://cur.cursors-4u.net/cursors/cur-2/cur117.cur"), auto;
   }
-  
+
   button, a {
     cursor: url("https://cur.cursors-4u.net/cursors/cur-2/cur117.cur"), auto;
+    touch-action: manipulation;
   }
 }
 
-/* ✅ Custom Utilities */
+/* ✅ Utilities */
 @layer utilities {
   .pixel-border {
-    box-shadow: 
+    box-shadow:
       0 0 0 2px hsl(var(--border)),
       0 0 20px hsl(var(--torch-orange) / 0.3),
       inset 0 0 20px hsl(var(--torch-orange) / 0.1);
   }
-
   .pixel-border-gold {
-    box-shadow: 
+    box-shadow:
       0 0 0 2px hsl(var(--treasure-gold)),
       0 0 20px hsl(var(--treasure-gold) / 0.4),
       inset 0 0 20px hsl(var(--treasure-gold) / 0.1);
   }
 
   .glow-text {
-    text-shadow: 
+    text-shadow:
       0 0 10px hsl(var(--torch-orange) / 0.8),
       0 0 20px hsl(var(--torch-orange) / 0.5),
       0 0 30px hsl(var(--torch-orange) / 0.3);
   }
-
   .glow-text-gold {
-    text-shadow: 
+    text-shadow:
       0 0 10px hsl(var(--treasure-gold) / 0.8),
       0 0 20px hsl(var(--treasure-gold) / 0.5),
       0 0 30px hsl(var(--treasure-gold) / 0.3);
   }
 
-  .font-pixel {
-    font-family: 'Press Start 2P', cursive;
-    line-height: 1.6;
+  /* ✅ Animations */
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes sparkle { 0%, 100% { opacity: 0; transform: scale(0); } 50% { opacity: 1; transform: scale(1); } }
+  @keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 20px hsl(var(--torch-orange) / 0.3); } 50% { box-shadow: 0 0 40px hsl(var(--torch-orange) / 0.6); } }
+  @keyframes steam { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-20px) scale(0.8); opacity: 0; } }
+  @keyframes slow-pan { 0% { background-position: 0 0; } 100% { background-position: -200px -200px; } }
+
+  .animate-float { animation: float 3s ease-in-out infinite; }
+  .animate-sparkle { animation: sparkle 2s ease-in-out infinite; }
+  .animate-glow-pulse { animation: glow-pulse 2s ease-in-out infinite; }
+  .animate-steam { animation: steam 2s ease-in-out infinite; }
+  .animate-slow-pan { animation: slow-pan 15s linear infinite; }
+
+  /* ✅ Responsive */
+  @media (max-width: 768px) {
+    body { font-size: 10px; line-height: 1.4; }
+    h1, h2, h3 { @apply text-center leading-snug; }
+    section { @apply px-4; }
+    img { @apply max-w-full h-auto; }
+    .pixel-border, .pixel-border-gold { box-shadow: 0 0 0 1px hsl(var(--border)); }
+    .glow-text, .glow-text-gold { text-shadow: 0 0 5px hsl(var(--torch-orange) / 0.5); }
   }
 
-  /* ✅ Animation Keyframes */
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-
-  @keyframes sparkle {
-    0%, 100% { opacity: 0; transform: scale(0); }
-    50% { opacity: 1; transform: scale(1); }
-  }
-
-  @keyframes glow-pulse {
-    0%, 100% { box-shadow: 0 0 20px hsl(var(--torch-orange) / 0.3); }
-    50% { box-shadow: 0 0 40px hsl(var(--torch-orange) / 0.6); }
-  }
-
-  /* ✅ Added New Animations */
-  @keyframes steam {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-20px) scale(0.8); opacity: 0; }
-  }
-
-  @keyframes slow-pan {
-    0% { background-position: 0 0; }
-    100% { background-position: -200px -200px; }
-  }
-
-  /* ✅ Animation Classes */
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .animate-sparkle {
-    animation: sparkle 2s ease-in-out infinite;
-  }
-
-  .animate-glow-pulse {
-    animation: glow-pulse 2s ease-in-out infinite;
-  }
-
-  .animate-steam {
-    animation: steam 2s ease-in-out infinite;
-  }
-
-  .animate-slow-pan {
-    animation: slow-pan 15s linear infinite;
+  @media (max-width: 480px) {
+    body { font-size: 8px; }
+    h1 { font-size: 0.9rem; }
+    h2 { font-size: 0.8rem; }
+    h3 { font-size: 0.75rem; }
+    .pixel-border, .pixel-border-gold { box-shadow: none; }
+    button, a { font-size: 0.6rem; }
   }
 }
-
-/* ✅ Optional fallback */
-.pixel-font {
-  font-family: 'Press Start 2P', cursive;
-}
-
-/* ✅ Global cursor */
-body {
-  cursor: url("https://cur.cursors-4u.net/cursors/cur-2/cur117.cur"), auto;
-}
-
-/* body {
-  cursor: url("Hlogo.cur") 4 4, auto;
-} */

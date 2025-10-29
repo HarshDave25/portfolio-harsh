@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Projects } from "@/components/Projects";
@@ -12,32 +12,55 @@ import { LoadingScreen } from "@/components/LoadingScreen";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // 📱 Detect Mobile Screen Size
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   if (isLoading) {
     return <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />;
   }
 
   return (
-    <div className="relative min-h-screen">
+    <div
+      className={`
+        relative min-h-screen overflow-x-hidden 
+        bg-gradient-to-b from-[hsl(210_54%_8%)] to-[hsl(210_50%_5%)]
+        ${isMobile ? "pt-4 space-y-16" : "pt-8 space-y-24"}
+      `}
+    >
+      {/* ✨ Background Particles */}
       <FloatingParticles />
-      
+
+      {/* 🏠 Hero Section */}
       <Hero />
       <SectionDivider />
-      
+
+      {/* 👤 About */}
       <About />
       <SectionDivider />
-      
+
+      {/* 💼 Projects */}
       <Projects />
       <SectionDivider />
-      
+
+      {/* 🧩 Experience */}
       <Experience />
       <SectionDivider />
-      
+
+      {/* ⚔️ Skills */}
       <Skills />
       <SectionDivider />
-      
+
+      {/* 📞 Contact */}
       <Contact />
-      
+
+      {/* 🪶 Footer */}
       <Footer />
     </div>
   );

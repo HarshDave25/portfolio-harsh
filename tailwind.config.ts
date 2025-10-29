@@ -2,19 +2,35 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        md: "2rem",
+        lg: "3rem",
+      },
       screens: {
+        sm: "480px",
+        md: "768px",
+        lg: "976px",
+        xl: "1200px",
         "2xl": "1400px",
       },
     },
     extend: {
       fontFamily: {
-        pixel: ['"Press Start 2P"', 'cursive'],
+        pixel: ['"Press Start 2P"', "cursive"],
+        poppins: ["Poppins", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -22,6 +38,7 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -78,7 +95,7 @@ export default {
           to: { height: "0" },
         },
         float: {
-          "0%, 100%": { transform: "translateY(0px)" },
+          "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
         sparkle: {
@@ -89,6 +106,10 @@ export default {
           "0%, 100%": { boxShadow: "0 0 20px hsl(var(--torch-orange) / 0.3)" },
           "50%": { boxShadow: "0 0 40px hsl(var(--torch-orange) / 0.6)" },
         },
+        "slow-pan": {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "-200px -200px" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -96,6 +117,7 @@ export default {
         float: "float 3s ease-in-out infinite",
         sparkle: "sparkle 2s ease-in-out infinite",
         "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+        "slow-pan": "slow-pan 15s linear infinite",
       },
     },
   },
