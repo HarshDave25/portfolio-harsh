@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 
 import HeaderCard from "@/components/HeaderCard";
-import FontToggle from "@/components/FontToggle";
+// import FontToggle from "@/components/FontToggle";
 
 // 🧠 Lazy-loaded pages for faster initial load
 const Index = lazy(() => import("@/pages/Index"));
@@ -28,7 +28,7 @@ const App = () => {
           <div className="min-h-screen bg-[#0d0d0d] flex flex-col items-center relative font-pixel text-white">
             
             {/* 🎛 Font toggle button (top-right usually) */}
-            <FontToggle />
+            {/* <FontToggle /> */}
 
             {/* 🧭 Header/navigation section */}
             <HeaderCard />
