@@ -60,43 +60,52 @@ const experiences = [
 
 export const Experience = () => {
   return (
-    <section id="experience" className="py-20 px-4 bg-card/20 relative overflow-hidden">
+    <section
+      id="experience"
+      className="py-16 sm:py-20 px-3 sm:px-6 bg-card/20 relative overflow-hidden"
+    >
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-12">
-          <Flag className="text-primary animate-pulse" size={32} />
-          <h2 className="text-xl md:text-2xl font-pixel glow-text">Guilds & Allies — Timeline</h2>
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 mb-10 sm:mb-12 text-center sm:text-left">
+          <Flag className="text-primary animate-pulse" size={28} />
+          <h2 className="text-lg sm:text-xl md:text-2xl font-pixel glow-text">
+            Guilds & Allies — Timeline
+          </h2>
         </div>
 
         {/* Pixel trail background */}
         <div className="absolute inset-0 opacity-10 bg-[url('/pixel-pattern.png')] bg-repeat"></div>
 
         {/* Timeline Container */}
-        <div className="relative border-l-2 border-primary/40 pl-6 space-y-10">
+        <div className="relative border-l-2 border-primary/40 pl-5 sm:pl-6 space-y-8 sm:space-y-10">
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className="relative pixel-border bg-card/60 backdrop-blur-sm p-6 transition-transform duration-300 hover:translate-x-2 hover:shadow-[0_0_15px_#00faff]"
+              className="relative pixel-border bg-card/60 backdrop-blur-sm p-4 sm:p-6 rounded-lg transition-transform duration-300 hover:translate-x-1 hover:shadow-[0_0_10px_#00faff]"
             >
               {/* Timeline Dot */}
-              <div className="absolute -left-[14px] top-6 w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_#00faff] animate-pulse"></div>
+              <div className="absolute -left-[13px] sm:-left-[14px] top-6 w-3 h-3 rounded-full bg-primary shadow-[0_0_10px_#00faff] animate-pulse"></div>
 
               {/* Header Row */}
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                <h3 className="text-sm md:text-base font-pixel text-treasure">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <h3 className="text-sm sm:text-base md:text-lg font-pixel text-treasure">
                   {exp.title}
                 </h3>
-                <span className="text-xs text-primary font-mono">{exp.period}</span>
+                <span className="text-[10px] sm:text-xs text-primary font-mono whitespace-nowrap">
+                  {exp.period}
+                </span>
               </div>
 
               {/* Sub Info */}
-              <p className="text-xs text-foreground/70 italic">{exp.location}</p>
+              <p className="text-[10px] sm:text-xs text-foreground/70 italic">
+                {exp.location}
+              </p>
 
               {/* Achievements List */}
-              <ul className="space-y-2 mt-3 text-xs text-foreground/80">
+              <ul className="space-y-1 sm:space-y-2 mt-3 text-[10px] sm:text-xs md:text-sm text-foreground/80">
                 {exp.achievements.map((achievement, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="text-treasure">▸</span>
+                  <li key={i} className="flex items-start gap-2 leading-relaxed">
+                    <span className="text-treasure mt-0.5">▸</span>
                     <span>{achievement}</span>
                   </li>
                 ))}
@@ -106,8 +115,8 @@ export const Experience = () => {
         </div>
       </div>
 
-      {/* Animated background effect (optional) */}
-      <div className="absolute bottom-0 right-0 opacity-20 w-64 h-64 bg-[url('https://media.tenor.com/HRR8HnpYJ6AAAAAC/monster-hunter-rathalos.gif')] bg-contain bg-no-repeat"></div>
+      {/* Animated background effect */}
+      <div className="absolute bottom-0 right-0 opacity-20 w-40 sm:w-64 h-40 sm:h-64 bg-[url('https://media.tenor.com/HRR8HnpYJ6AAAAAC/monster-hunter-rathalos.gif')] bg-contain bg-no-repeat"></div>
     </section>
   );
 };

@@ -54,7 +54,7 @@ const projects: Project[] = [
     image: "/Interface.png",
     size: "md:col-span-1 md:row-span-1",
   },
-  {
+    {
     title: "Dog Boarding Website",
     description: "A Colourful and Playful Dog Boarding Website.",
     type: "Case Studies",
@@ -65,7 +65,7 @@ const projects: Project[] = [
   },
 ];
 
-const topSliderImages: string[] = [
+const topSliderImages = [
   "/slider1.jpeg",
   "/slider2.jpeg",
   "/Me 00.png",
@@ -74,7 +74,7 @@ const topSliderImages: string[] = [
   "/slider6.jpeg",
 ];
 
-const bottomSliderImages: string[] = [
+const bottomSliderImages = [
   "/slider7.jpeg",
   "/slider8.jpeg",
   "/slider9.jpeg",
@@ -88,10 +88,13 @@ const bottomSliderImages: string[] = [
 
 export const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8">
+    <section
+      id="projects"
+      className="py-10 sm:py-16 md:py-20 px-3 sm:px-6 md:px-8"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-center sm:items-end gap-3 sm:gap-4 mb-8 sm:mb-12 text-center sm:text-left">
+        <div className="flex flex-col sm:flex-row items-center sm:items-end gap-3 sm:gap-4 mb-10 sm:mb-14 text-center sm:text-left">
           <Trophy className="text-treasure animate-float w-8 h-8 sm:w-10 sm:h-10" />
           <h2 className="text-lg sm:text-xl md:text-2xl font-pixel glow-text">
             🗺️ Completed Quests
@@ -108,20 +111,23 @@ export const Projects: React.FC = () => {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover opacity-85 hover:opacity-100 transition-all"
+                className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-all"
+                loading="lazy"
               />
 
               {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-black/60 opacity-0 hover:opacity-100 transition-all flex flex-col justify-center items-center text-center text-white p-4">
-                <h3 className="text-sm sm:text-base font-pixel mb-2 text-treasure">
+              <div className="absolute inset-0 bg-black/70 opacity-0 hover:opacity-100 transition-all flex flex-col justify-center items-center text-center text-white p-4 sm:p-5">
+                <h3 className="text-base sm:text-lg font-pixel mb-2 text-treasure">
                   {project.title}
                 </h3>
-                <p className="text-[11px] sm:text-xs mb-3">{project.description}</p>
+                <p className="text-[11px] sm:text-sm mb-3">
+                  {project.description}
+                </p>
                 <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mb-3">
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="text-[9px] sm:text-[10px] px-2 py-1 bg-muted/50 text-muted-foreground border border-primary/30"
+                      className="text-[9px] sm:text-[11px] px-2 py-1 bg-muted/50 text-muted-foreground border border-primary/30 rounded-sm"
                     >
                       {tag}
                     </span>
@@ -152,24 +158,25 @@ export const Projects: React.FC = () => {
           ))}
         </div>
 
-        {/* --- Dual Scrolling Carousel --- */}
-        <div className="mt-16 sm:mt-20 text-center">
+        {/* Dual Carousel */}
+        <div className="mt-14 sm:mt-20 text-center">
           <h3 className="text-lg sm:text-xl md:text-2xl font-pixel mb-6 text-treasure">
             More Adventures Ahead
           </h3>
 
           {/* Top slider */}
-          <div className="overflow-hidden relative group mb-6">
+          <div className="overflow-hidden relative group mb-6 touch-pan-x">
             <div className="flex gap-4 sm:gap-6 animate-scroll-left group-hover:[animation-play-state:paused]">
               {topSliderImages.concat(topSliderImages).map((img, i) => (
                 <div
                   key={i}
-                  className="flex-shrink-0 w-[160px] sm:w-[200px] md:w-[240px] h-[220px] sm:h-[260px] md:h-[300px] rounded-xl overflow-hidden shadow-lg"
+                  className="flex-shrink-0 w-[140px] sm:w-[180px] md:w-[240px] h-[200px] sm:h-[260px] md:h-[300px] rounded-xl overflow-hidden shadow-lg"
                 >
                   <img
                     src={img}
                     alt={`top-slide-${i}`}
                     className="w-full h-full object-cover rounded-xl"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -177,17 +184,18 @@ export const Projects: React.FC = () => {
           </div>
 
           {/* Bottom slider */}
-          <div className="overflow-hidden relative group">
+          <div className="overflow-hidden relative group touch-pan-x">
             <div className="flex gap-4 sm:gap-6 animate-scroll-right group-hover:[animation-play-state:paused]">
               {bottomSliderImages.concat(bottomSliderImages).map((img, i) => (
                 <div
                   key={i}
-                  className="flex-shrink-0 w-[160px] sm:w-[200px] md:w-[240px] h-[220px] sm:h-[260px] md:h-[300px] rounded-xl overflow-hidden shadow-lg"
+                  className="flex-shrink-0 w-[140px] sm:w-[180px] md:w-[240px] h-[200px] sm:h-[260px] md:h-[300px] rounded-xl overflow-hidden shadow-lg"
                 >
                   <img
                     src={img}
                     alt={`bottom-slide-${i}`}
                     className="w-full h-full object-cover rounded-xl"
+                    loading="lazy"
                   />
                 </div>
               ))}

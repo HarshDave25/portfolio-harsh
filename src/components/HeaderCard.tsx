@@ -3,21 +3,24 @@ import { FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const HeaderCard: React.FC = () => {
   return (
-    <div className="w-[90%] sm:max-w-xl mx-auto mt-6 sm:mt-10 border-4 border-black bg-white shadow-[6px_6px_0_#000] relative font-pixel rounded-lg overflow-hidden">
+    <div className="w-[92%] sm:w-[90%] md:max-w-2xl mx-auto mt-6 sm:mt-10 border-4 border-black bg-white shadow-[5px_5px_0_#000] font-pixel rounded-lg overflow-hidden transition-all duration-300">
       {/* Top Section */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-between p-4 sm:p-6 text-center sm:text-left">
-        <div className="flex flex-col sm:flex-row items-center sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start justify-center sm:justify-between gap-3 sm:gap-4 p-4 sm:p-6 text-center sm:text-left">
+        {/* Profile Info */}
+        <div className="flex flex-col sm:flex-row items-center sm:items-center gap-3 sm:gap-4">
           {/* Profile Image */}
           <img
             src="/Hlogo.png"
             alt="Harsh Bharat Dave"
-            className="w-16 h-16 rounded-full border-4 border-black bg-black"
+            className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-4 border-black bg-black object-cover"
           />
+
+          {/* Name + Role */}
           <div>
-            <h1 className="text-lg sm:text-2xl font-bold text-black">
+            <h1 className="text-base sm:text-xl md:text-2xl font-bold text-black leading-tight">
               Harsh Bharat Dave
             </h1>
-            <p className="text-xs sm:text-sm text-black">
+            <p className="text-[11px] sm:text-sm md:text-base text-black">
               Product Designer & Developer
             </p>
           </div>
@@ -30,9 +33,9 @@ const HeaderCard: React.FC = () => {
         <div className="absolute inset-0 opacity-15 bg-[url('/pixel-dragon.gif')] bg-cover bg-center pointer-events-none"></div>
 
         {/* Left: Status */}
-        <div className="flex items-center justify-center sm:justify-start space-x-3 sm:space-x-5 relative z-10">
-          <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-          <p className="text-xs sm:text-sm tracking-wide">
+        <div className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3 relative z-10">
+          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse"></div>
+          <p className="text-[10px] sm:text-xs md:text-sm tracking-wide">
             Available for work
           </p>
         </div>
@@ -44,11 +47,11 @@ const HeaderCard: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="bg-orange-500 rounded-full p-2 border-2 border-black 
+            className="bg-orange-500 rounded-full p-2 sm:p-2.5 border-2 border-black 
                        shadow-[2px_2px_0_#000] hover:scale-110 
                        hover:shadow-[0_0_8px_#ff8c00] transition-all duration-200 flex items-center justify-center"
           >
-            <FaLinkedin size={14} />
+            <FaLinkedin size={14} className="sm:w-4 sm:h-4" />
           </a>
 
           <a
@@ -56,11 +59,11 @@ const HeaderCard: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="bg-orange-500 rounded-full p-2 border-2 border-black 
+            className="bg-orange-500 rounded-full p-2 sm:p-2.5 border-2 border-black 
                        shadow-[2px_2px_0_#000] hover:scale-110 
                        hover:shadow-[0_0_8px_#ff8c00] transition-all duration-200 flex items-center justify-center"
           >
-            <FaInstagram size={14} />
+            <FaInstagram size={14} className="sm:w-4 sm:h-4" />
           </a>
         </div>
       </div>

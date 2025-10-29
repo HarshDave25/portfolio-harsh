@@ -46,7 +46,7 @@ export const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
-      {/* Pixel Dungeon Background */}
+      {/* Background */}
       <div className="absolute inset-0 bg-[url('/pixel-dungeon.png')] bg-cover bg-center animate-slow-pan opacity-20"></div>
 
       {/* Floating XP Orbs */}
@@ -63,20 +63,20 @@ export const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
       ))}
 
       {/* Loading Card */}
-      <div className="relative z-10 flex flex-col items-center gap-8 p-8 text-center">
-        <div className="relative pixel-border-gold bg-card/80 backdrop-blur-sm p-8 shadow-[0_0_30px_#00faff33]">
+      <div className="relative z-10 flex flex-col items-center gap-6 sm:gap-8 p-4 sm:p-8 text-center w-[90%] max-w-md">
+        <div className="relative pixel-border-gold bg-card/80 backdrop-blur-sm p-6 sm:p-8 shadow-[0_0_30px_#00faff33] w-full flex flex-col items-center">
           <img
             src={pixelHarsh}
             alt="Pixel Harsh"
-            className="w-48 h-48 md:w-56 md:h-56 animate-float image-rendering-pixelated drop-shadow-[0_0_10px_#00faff99]"
+            className="w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 animate-float image-rendering-pixelated drop-shadow-[0_0_10px_#00faff99]"
           />
 
           {/* Coffee Mug */}
-          <div className="absolute bottom-8 right-8">
+          <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8">
             <div className="relative">
               <Coffee
                 className="text-treasure animate-float"
-                size={48}
+                size={36}
                 style={{ animationDelay: "0.5s" }}
               />
               <div className="absolute inset-0 overflow-hidden">
@@ -90,7 +90,7 @@ export const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
 
           {/* Steam rising */}
           {coffeeLevel > 0 && (
-            <div className="absolute bottom-16 right-10">
+            <div className="absolute bottom-12 right-8 sm:bottom-16 sm:right-10">
               {[...Array(3)].map((_, i) => (
                 <div
                   key={i}
@@ -106,21 +106,20 @@ export const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
           )}
         </div>
 
-        {/* Loading Text */}
-        <div className="text-center space-y-3">
-          <p className="text-sm font-pixel text-treasure glow-text-gold animate-pulse">
+        {/* Loading Text & Progress */}
+        <div className="text-center space-y-3 w-full">
+          <p className="text-xs sm:text-sm font-pixel text-treasure glow-text-gold animate-pulse">
             {loadingText}
           </p>
 
-          {/* Pixel Progress Bar */}
-          <div className="w-64 h-4 pixel-border bg-card/60 mx-auto">
+          <div className="w-full h-3 sm:h-4 pixel-border bg-card/60 mx-auto">
             <div
               className="h-full bg-gradient-to-r from-primary to-treasure transition-all duration-150"
               style={{ width: `${100 - coffeeLevel}%` }}
             />
           </div>
 
-          <p className="text-xs text-muted-foreground font-pixel">
+          <p className="text-[10px] sm:text-xs text-muted-foreground font-pixel">
             {Math.round(100 - coffeeLevel)}% loaded
           </p>
         </div>
