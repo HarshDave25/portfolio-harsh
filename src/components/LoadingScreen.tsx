@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Coffee } from "lucide-react";
-import pixelHarsh from "@/assets/pixel-harsh.png";
+import pixelHarsh from "/pixel-harsh.png";
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void;

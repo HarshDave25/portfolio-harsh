@@ -1,7 +1,7 @@
 import { Scroll } from "lucide-react";
 import { PixelButton } from "./PixelButton";
-import heroDungeon from "@/assets/hero-dungeon.png";
-import pixelHarsh from "@/assets/pixel-harsh.png";
+import heroDungeon from "/hero-dungeon.png";
+import pixelHarsh from "/pixel-harsh.png";
 
 export const Hero = () => {
   const scrollToAbout = () => {

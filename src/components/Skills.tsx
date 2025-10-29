@@ -3,9 +3,9 @@ import { Wand2, Palette, Code, Layers, Zap, Sparkles } from "lucide-react";
 const skills = [
   { name: "Figma", icon: Layers, level: "Master" },
   { name: "Framer", icon: Zap, level: "Advanced" },
-  { name: "Photoshop", icon: Palette, level: "Master" },
-  { name: "Corel Draw", icon: Sparkles, level: "Advanced" },
-  { name: "React", icon: Code, level: "Beginner" },
+  { name: "Photoshop", icon: Palette, level: "Advance" },
+  { name: "Corel Draw", icon: Sparkles, level: "intermediate" },
+  { name: "React", icon: Code, level: "intermediate" },
   { name: "UI/UX Design", icon: Wand2, level: "Master" },
 ];
 

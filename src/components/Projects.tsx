@@ -1,12 +1,23 @@
 import { Trophy } from "lucide-react";
+import React from "react";
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  type: string;
+  tags: string[];
+  image: string;
+  size: string;
+  link?: string;
+}
+
+const projects: Project[] = [
   {
     title: "Finincial Website",
     description: "A Financial & Stock Questioning Website.",
     type: "Web Application",
     tags: ["Angular", "Angular CLI", "Angular 18", "Figma", "User Research"],
-    image: "src/assets/finance.png",
+    image: "/finance.png",
     size: "col-span-2 row-span-1",
   },
   {
@@ -14,7 +25,7 @@ const projects = [
     description: "Designs that appeal to audiences and hit well.",
     type: "Social Media Design",
     tags: ["Graphic Design", "Marketing", "Visual Design"],
-    image: "src/assets/insta.png",
+    image: "/Insta.png",
     size: "col-span-1 row-span-2",
     link: "https://www.instagram.com/p/DPLQmI2kg9c/?igsh=b2F2ZWxtYXN4ZnJu",
   },
@@ -24,7 +35,7 @@ const projects = [
     type: "Content Design",
     tags: ["Motion Design", "Branding", "Photoshop"],
     size: "col-span-1 row-span-1",
-    image: "src/assets/Cloudy2.jpg",
+    image: "/Cloudy2.jpg",
     link: "https://www.instagram.com/reel/DK1u2_2pxK1/?igsh=eWtzOGRvM2owYmsw",
   },
   {
@@ -32,7 +43,7 @@ const projects = [
     description: "Branding projects.",
     type: "Brand Design",
     tags: ["Logo", "Identity", "Illustration"],
-    image: "src/assets/Tshirt 3.jpeg",
+    image: "/Tshirt 3.jpeg",
     size: "col-span-1 row-span-1",
   },
   {
@@ -40,7 +51,7 @@ const projects = [
     description: "In-depth case study showcasing UX problem solving.",
     type: "Case Study",
     tags: ["Research", "Wireframing", "Prototyping"],
-    image: "src/assets/Interface.png",
+    image: "/Interface.png",
     size: "col-span-1 row-span-1",
   },
   {
@@ -48,28 +59,35 @@ const projects = [
     description: "A Colourful and Playful Dog Boarding Website.",
     type: "Case Studies",
     tags: ["Framer", "Wireframing", "Prototyping"],
-    image: "src/assets/Tail Town.png",
+    image: "/Tail Town.png",
     size: "col-span-2 row-span-1",
     link: "https://tailtown.framer.website/",
   },
 ];
 
-const sliderImages = [
-  "src/assets/slider1.jpg",
-  "src/assets/slider2.jpg",
-  "src/assets/slider3.jpg",
-  "src/assets/slider4.jpg",
-  "src/assets/slider5.jpg",
-  "src/assets/slider6.jpg",
-  "src/assets/slider7.jpg",
-  "src/assets/slider8.jpg",
-  "src/assets/slider9.jpg",
-  "src/assets/slider10.jpg",
-  "src/assets/slider11.jpg",
-  "src/assets/slider12.jpg",
+// 🖼️ Two separate image arrays for top and bottom sliders
+const topSliderImages: string[] = [
+  "/slider1.jpeg",
+  "/slider2.jpeg",
+  "/Me 00.png",
+  "/slider4.jpeg",
+  "/Lemon2.png",
+  "/slider6.jpeg",
 ];
 
-export const Projects = () => {
+const bottomSliderImages: string[] = [
+  "/slider7.jpeg",
+  "/slider8.jpeg",
+  "/slider9.jpeg",
+  "/slider10.jpeg",
+  "/Me 0.png",
+  "/Design.jpeg",
+  "/Dave 2.png",
+  "/Orange.png",
+  "/Me 00.png",
+];
+
+export const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -135,22 +153,41 @@ export const Projects = () => {
           ))}
         </div>
 
-        {/* --- New Scrolling Carousel --- */}
+        {/* --- Dual Scrolling Carousel --- */}
         <div className="mt-20 text-center">
           <h3 className="text-2xl font-pixel mb-6 text-treasure">
-            More Adventures Ahead 🚀
+            More Adventures Ahead
           </h3>
 
-          <div className="overflow-hidden relative group">
+          {/* Top slider (scrolls left) */}
+          <div className="overflow-hidden relative group mb-6">
             <div className="flex gap-6 animate-scroll-left group-hover:[animation-play-state:paused]">
-              {sliderImages.concat(sliderImages).map((img, i) => (
+              {topSliderImages.concat(topSliderImages).map((img, i) => (
                 <div
                   key={i}
                   className="flex-shrink-0 w-[240px] h-[300px] rounded-xl overflow-hidden shadow-lg"
                 >
                   <img
                     src={img}
-                    alt={`slide-${i}`}
+                    alt={`top-slide-${i}`}
+                    className="w-full h-full object-cover rounded-xl"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom slider (scrolls right) */}
+          <div className="overflow-hidden relative group">
+            <div className="flex gap-6 animate-scroll-right group-hover:[animation-play-state:paused]">
+              {bottomSliderImages.concat(bottomSliderImages).map((img, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 w-[240px] h-[300px] rounded-xl overflow-hidden shadow-lg"
+                >
+                  <img
+                    src={img}
+                    alt={`bottom-slide-${i}`}
                     className="w-full h-full object-cover rounded-xl"
                   />
                 </div>
@@ -166,12 +203,20 @@ export const Projects = () => {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
+        @keyframes scroll-right {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
         .animate-scroll-left {
           width: 200%;
-          animation: scroll-left 40s linear infinite;
+          animation: scroll-left 60s linear infinite;
         }
-        /* Pauses when hovered (via group-hover) */
-        .group:hover .animate-scroll-left {
+        .animate-scroll-right {
+          width: 200%;
+          animation: scroll-right 70s linear infinite;
+        }
+        .group:hover .animate-scroll-left,
+        .group:hover .animate-scroll-right {
           animation-play-state: paused;
         }
       `}</style>
